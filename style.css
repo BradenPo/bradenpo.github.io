@@ -55,7 +55,7 @@ a, a:hover, a:focus {
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: rgb(100, 47, 0, 47);
+    background: rgb(0, 64, 109);
     color: #fff;
     transition: all 0.3s;
 }
@@ -85,13 +85,13 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: rgb(0, 173, 104);
     background: #fff;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: rgb(0, 64, 109);
 }
 
 
