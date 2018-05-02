@@ -14,7 +14,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #333;
+    color: #999;
 }
 
 a, a:hover, a:focus {
@@ -55,7 +55,7 @@ a, a:hover, a:focus {
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #7386D5;
+    background: rgb(100, 47, 0, 47);
     color: #fff;
     transition: all 0.3s;
 }
