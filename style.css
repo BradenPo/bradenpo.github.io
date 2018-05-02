@@ -85,8 +85,8 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: rgb(0, 173, 104);
-    background: #fff;
+    color: #fff;
+    background: rgb(0, 173, 104);
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
@@ -115,7 +115,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: rgb(0, 64, 109);
 }
 
 ul.CTAs {
