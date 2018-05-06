@@ -58,6 +58,7 @@ a, a:hover, a:focus {
     background: rgb(0, 64, 109);
     color: #fff;
     transition: all 0.3s;
+    padding-bottom: 15px;
 }
 
 #sidebar.active {
