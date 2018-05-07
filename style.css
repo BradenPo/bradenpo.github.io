@@ -55,7 +55,7 @@ a, a:hover, a:focus {
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: rgb(27, 62, 111);
+    background: #1B3E6F;
     color: #fff;
     transition: all 0.3s;
     padding-bottom: 10px;
@@ -67,7 +67,7 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: rgb(0, 64, 109);
+    background: #1B3E6F;
 }
 
 #sidebar ul.components {
@@ -92,7 +92,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: rgb(27, 62, 111);
+    background: #1B3E6F;
 }
 
 
@@ -116,7 +116,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: rgb(27, 62, 111);
+    background: #1B3E6F;
 }
 
 ul.CTAs {
