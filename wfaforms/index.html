@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WFA Forms</title>
+	<!-- Import Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- End Import -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</script>
+</head>
+<body>
+
+<!-- Modal HTML -->
+
+<center><h1>Online Booking Form</h1></center>
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">				
+				<h4 class="modal-title">Sign In</h4>
+			</div>
+			<div class="modal-body">
+				<form action="https://forms.wfa.org.nz/Submit.asp" method="post" target="_self" name="LoginForm">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" id="UserName" onkeyup="Validate()" class="form-control" name="username" placeholder="Username" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" id="Password" onkeypress="Validate()" onmouseover="Validate()" class="form-control" name="password" placeholder="Password" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" value="Submit" id="Submit" onmouseover="Validate()" class="btn btn-primary btn-block btn-lg">Submit</button>
+					</div>
+					<p class="hint-text"><a href="https://forms.wfa.org.nz/User/Reset/">Forgot Password?</a></p>
+				</form>
+			</div>
+			<div class="modal-footer"><a href="https://forms.wfa.org.nz/User/Apply/">Register for Access</a></div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<p>Wellington Free Ambulance &copy; 2018 | <a href="http://wfa.org.nz">wfa.org.nz</a>
+	</div>
+
+	<script>
+		
+	function Validate()  
+	{ 
+	var pw= document.getElementById("Password").value ;
+	var Email = document.getElementById("UserName");
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+		
+	if(Email.value.match(mailformat) && pw.length > 6 )  
+	//if(Email.length > 5  )  
+	{  
+		document.getElementById("Submit").disabled=false;  
+		return true;  
+	}  
+	else  
+	{ 
+		document.getElementById("Submit").disabled=true; 
+		return false;  
+	}  
+	} 
+
+
+	</script>
+
+	<!-- Import BootStrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- End Import -->
+
+</body>
+</html>
