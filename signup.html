@@ -25,31 +25,28 @@
 			<div class="modal-body">
 				<center><p>All fields are required to be filled out to register.</p>
 				<p>Password must contain a minimum of 8 characters, including upper and lower case, a number, and a special character. (!, @, #)</p><center><br/>
-				<form action="https://forms.wfa.org.nz/User/Apply/Insert.asp" method="post" name="theForm">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<form action="#" method="post" id="newUser" name="theForm">
 					<div class="row">
 					<div class="col-md-6">
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasFirstName"></span>
-							<input type="text" id="FirstName" onkeyup="hasFN()" class="form-control" name="FirstName" placeholder="First Name" required="required" autocomplete="off">
+							<input type="text" id="FirstName" class="form-control" name="FirstName" placeholder="First Name" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasLastName"></span>
-							<input type="text" id="LastName" onkeyup="hasLN()" class="form-control" name="LastName" placeholder="Last Name" required="required" autocomplete="off">
+							<input type="text" id="LastName" class="form-control" name="LastName" placeholder="Last Name" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasOrganisation"></span>
-							<input type="text" id="Organisation" onkeyup="hasOrg()" class="form-control" name="Organisation" placeholder="Organisation" required="required" autocomplete="off">
+							<input type="text" id="Organisation" class="form-control" name="Organisation" placeholder="Organisation" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasPhone"></span>
-							<input type="text" id="Phone" onkeyup="hasPh()" class="form-control" name="Phone" placeholder="Contact Phone No." required="required" autocomplete="off">
+							<input type="text" id="Phone" class="form-control" name="Phone" placeholder="Contact Phone No." required="required" autocomplete="off">
 						</div>
 					</div>
 				</div>
@@ -57,26 +54,22 @@
 				
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasEmail"></span>
-							<input type="text" id="EMAIL" onchange="ValidateEmail()" class="form-control" name="EMail" placeholder="Email Address" required="required" autocomplete="off">
+							<input type="text" id="EMAIL" class="form-control" name="EMail" placeholder="Email Address" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasPassword"></span>
-							<input type="password" id="password" onkeyup="return passwordChanged();" class="form-control" name="password" placeholder="Password" required="required" autocomplete="off">
-							<span id="strength"></span>
+							<input type="password" title="Password must contain at least 8 characters, including upper/lowercase letters, numbers and special characters." name="pass1" id="pass1" required="required" placeholder="Password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : ''); if(this.checkValidity()) form.pwd2.pattern = RegExp.escape(this.value);">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
-							<span id="hasPasswordMatch"></span>
-							<input type="password" id="Redo" onkeyup="return CheckSame();" class="form-control" name="password1" placeholder="Confirm Password" required="required" autocomplete="off">
-							<span id="domatch"></span>
+							<input type="password" title="Password must match." name="pass2" id="pass2" onkeyup="checkPass(); pwdStrength(); return false;" placeholder="Confirm Password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"">
+							<span id="confirmMessage" class="confirmMessage"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" value="Submit" id="Submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+						<button type="submit" value="Submit" name="Submit" id="Submit" class="btn btn-primary btn-block btn-lg" disabled="disabled">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -90,152 +83,66 @@
 		<p>Wellington Free Ambulance &copy; 2018 | <a href="http://wfa.org.nz">wfa.org.nz</a>
 	</div>
 
-	<script>
-// Set all error Flags
-	hasFirstName.innerHTML = '<span class="color:red">*</span>';
-	hasLastName.innerHTML = '*';
-	hasOrganisation.innerHTML = '<span style="color:red">*</span>';
-	hasPhone.innerHTML = '<span style="color:red">*</span>';
-	hasEMail.innerHTML = '<span style="color:red">*</span>';
-	hasPassword.innerHTML = '<span style="color:red">*</span>';
-	hasPasswordMatch.innerHTML = '<span style="color:red">*</span>';
-	
+<script>
+	function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+    }
+} 
+</script>
 
-// Functions to check errors
-	function hasFN(){
-	  				var N = document.getElementById("FirstName");
-					if (N.value.length > 0) 
-						{hasFirstName.innerHTML = '';}
-					else
-						{hasFirstName.innerHTML = '*;'}
-					ReadyToSubmit()
-					}
-					
-	function hasLN(){
-	  				var N = document.getElementById("LastName");
-					if (N.value.length > 0) 
-						{hasLastName.innerHTML = '';}
-					else
-						{hasLastName.innerHTML = '*';}
-					ReadyToSubmit()
-					}				
-	
-	function hasOrg(){
-	  				var N = document.getElementById("Organisation");
-					if (N.value.length > 0) 
-						{hasOrganisation.innerHTML = '';}
-					else
-						{hasOrganisation.innerHTML = '*';}
-					ReadyToSubmit()
-					}				
+<script type="text/javascript">
 
-	function hasPh(){
-	  				var N = document.getElementById("Phone");
-					if (N.value.length > 0) 
-						{hasPhone.innerHTML = '';}
-					else
-						{hasPhone.innerHTML = '*';}
-					ReadyToSubmit()
-					}						
+  // polyfill for RegExp.escape
+  if(!RegExp.escape) {
+    RegExp.escape = function(s) {
+      return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+  }
 
-	function ValidateEmail()  
-					{  
-					var Email = document.getElementById("EMAIL")
-					var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-					if(Email.value.match(mailformat))  
-					{  
-						hasEMail.innerHTML = '';
-					return true;  
-					}  
-					else  
-					{  
-						document.theForm.UserName.focus();  
-						hasEMail.innerHTML = '*';
-						document.getElementById("Submit").disabled=true;
-					return false;  
-					}  
-					} 
+</script>
 
+<script>
+	var inputs = $("form#newUser input, form#newUser textarea");
 
-function passwordChanged() 
-					{
-						var strength = document.getElementById('strength');
-						var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-						var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-						var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-						var pwd = document.getElementById("password");
-						
-						if (pwd.value.length==0) {strength.innerHTML = 'Keep Typing';
-						
-						}
-						else if (false == enoughRegex.test(pwd.value)) {strength.innerHTML = 'More Characters';
-						
-						}
-						
-						else if (strongRegex.test(pwd.value)) {strength.innerHTML = 'Strong!';
-							hasPassword.innerHTML = '';
-						} 
-						
-						else if (mediumRegex.test(pwd.value)) {strength.innerHTML = '<span style="color:orange">Medium!</span>';
-						hasPassword.innerHTML = '*';
-						document.getElementById("Submit").disabled=true;
-						} 
-						else {strength.innerHTML = '<span style="color:red">Weak!</span>';
-						
-						}
-					CheckSame() 
-					}
-	
-function CheckSame() 
-	{
-		var pwd = document.getElementById("password");
-		var redo = document.getElementById("Redo");
-		//var strength = document.getElementById('strength');
-		
-		//if ( pwd.value == redo.value && strength.innerHTML == "Strong!" )
-		if ( pwd.value == redo.value  )
-		{ domatch.innerHTML = 'Match!';
-			hasPasswordMatch.innerHTML = '';
-		
-			}
-		else
-		{ 
-		domatch.innerHTML = '<span style="color:red">No Match</span>';
-			hasPasswordMatch.innerHTML = '*';
-		} 
-		ReadyToSubmit()
+	var validateInputs = function validateInputs(inputs) {
+	  var validForm = true;
+	  inputs.each(function(index) {
+	    var input = $(this);
+	    if (!input.val() || (input.type === "radio" && !input.is(':checked'))) {
+	      $("#Submit").attr("disabled", "disabled");
+	      validForm = false;
+	    }
+	  });
+	  return validForm;
 	}
 
-function ReadyToSubmit()
-	{
-	var strength = document.getElementById('strength');
-	var domatch= document.getElementById("domatch");
-	var FN = document.getElementById("hasFirstName");
-	var LN = document.getElementById("hasLastName");	
-	var Org = document.getElementById("hasOrganisation");		 
-	var Phone= document.getElementById("hasPhone");						
-
-	
-	if (strength.innerHTML == "Strong!" 
-			&& domatch.innerHTML == "Match!"
-			&& (FN.innerHTML =="")
-			&&	(LN.innerHTML =="")
-			&&	(Org.innerHTML =="")
-			&&	(Phone.innerHTML =="")
-  		)
-		{
-			document.getElementById("Submit").disabled=false;
-		}
-	else
-		{
-			document.getElementById("Submit").disabled=true;
-		}
-	
-	}
-
-
-
-	
+	inputs.change(function() {
+	  if (validateInputs(inputs)) {
+	    $("#Submit").removeAttr("disabled");
+	  }
+	});	
 </script>
 
 	<!-- Import BootStrap JS -->
