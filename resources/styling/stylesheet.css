@@ -67,7 +67,7 @@ img {
 
 .loginBox .btn p {
 	font-size: 25px;
-	letter-spacing: 1px;
+	letter-spacing: 0.5px;
 }
 
 .loginBox .btn:hover, .loginBox .btn:focus {
