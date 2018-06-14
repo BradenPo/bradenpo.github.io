@@ -34,6 +34,11 @@ h1 {
 	max-width: 600px;
 }
 
+.row {
+	margin: 0;
+	padding: 0;
+}
+
 .header {
 	padding-top: 25px;
 	padding-bottom: 25px;
@@ -145,21 +150,6 @@ img {
 	.container a:hover {
 		text-decoration: underline;
 	}
-
-.footer {
-	position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-top: 15px;
-    background-color: #00b185;
-    height: 40px;
-    color: white;
-    text-align: center;
-    vertical-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .footer p {
 	font-size: 12px;
