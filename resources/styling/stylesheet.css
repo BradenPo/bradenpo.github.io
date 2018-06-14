@@ -1,6 +1,7 @@
 body {
 	background-color: #004677;
 	font-family: 'merriweather_sanslight', Arial, sans-serif;
+	margin-bottom: 40px;
 }
 
 @font-face {
@@ -146,16 +147,15 @@ img {
 	}
 
 .footer {
-	position: fixed;
-    left: 0;
+	position: absolute;
     bottom: 0;
     width: 100%;
     padding-top: 15px;
     background-color: #00b185;
+    height: 40px;
     color: white;
     text-align: center;
     vertical-align: center;
-    display: inline-block;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,10 +168,4 @@ img {
 
 .footer a {
 	color: #fff;
-}
-
-#content {
-    padding-top : 121px;
-    width : 100%;
-    display: inline-block;
 }
