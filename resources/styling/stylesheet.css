@@ -45,6 +45,7 @@ h1 {
 	text-align: center;
 }
 
+
 .container {
 	display: flex;
 	justify-content: center;
@@ -66,7 +67,11 @@ h1 {
 }
 
 img {
-	max-width: 100%
+	max-width: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .jumbotron {
