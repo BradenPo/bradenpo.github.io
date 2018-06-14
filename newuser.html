@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Import BootStrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- End Import -->
+	<link rel="stylesheet" type="text/css" href="resources/styling/stylesheet.css">
+
+	<!-- End Import -->
+	<title>Register | WFA Forms</title>
+</head>
+<body>
+
+	<div class="header"><img src="resources/img/logo.jpg"></div>
+	<div class="container">
+		<div class="jumbotron">
+  			<h1>Registration</h1>
+  			<p>Please fill in all field below to complete you registration.</p><p>Passwords require a mix of upper/lower case letters, a number, and a special character. (!, @, #, $, %)</p> 
+  						<div class="loginBox">
+  							<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<form action="https://forms.wfa.org.nz/User/Apply/Insert.asp" method="post" id="newUser" name="theForm">
+					<div class="row">
+					<div class="col-md-6">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" id="FirstName" class="form-control" name="FirstName" placeholder="First Name" required="required" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" id="LastName" class="form-control" name="LastName" placeholder="Last Name" required="required" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" id="Organisation" class="form-control" name="Organisation" placeholder="Organisation" required="required" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" id="Phone" class="form-control" name="Phone" placeholder="Contact Phone No." required="required" autocomplete="off">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" id="EMAIL" class="form-control" name="EMail" placeholder="Email Address" required="required" autocomplete="off">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="password" title="Password must contain at least 8 characters, including upper/lowercase letters, numbers and special characters." name="pass1" id="pass1" required="required" placeholder="Password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : ''); if(this.checkValidity()) form.pwd2.pattern = RegExp.escape(this.value);">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="password" title="Password must match." name="pass2" id="pass2" onkeyup="checkPass(); pwdStrength(); return false;" placeholder="Confirm Password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"">
+							<span id="confirmMessage" class="confirmMessage"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" value="Submit" name="Submit" id="Submit" class="btn btn-primary btn-block btn-lg" disabled="disabled">Submit</button>
+					</div>
+				</div>
+			</div>
+				</form>
+			</div>
+			<div class="boxFooter"><a href="javascript:history.back()">Go Back</a></div>
+		</div>
+		</div>
+  	</div>
+
+  	<div class="row">
+			<div class="col-md-12">
+		<div class="footer">
+			<p>Wellington Free Ambulance &copy; 2018 | <a href="http://wfa.org.nz">wfa.org.nz</a></p>
+		</div>
+	</div>
+	</div>
+
+	<script>
+	function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+    }
+} 
+</script>
+
+<script type="text/javascript">
+
+  // polyfill for RegExp.escape
+  if(!RegExp.escape) {
+    RegExp.escape = function(s) {
+      return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+  }
+
+</script>
+
+<script>
+	var inputs = $("form#newUser input, form#newUser textarea");
+
+	var validateInputs = function validateInputs(inputs) {
+	  var validForm = true;
+	  inputs.each(function(index) {
+	    var input = $(this);
+	    if (!input.val() || (input.type === "radio" && !input.is(':checked'))) {
+	      $("#Submit").attr("disabled", "disabled");
+	      validForm = false;
+	    }
+	  });
+	  return validForm;
+	}
+
+	inputs.change(function() {
+	  if (validateInputs(inputs)) {
+	    $("#Submit").removeAttr("disabled");
+	  }
+	});	
+</script>
+
+		<!-- Import BootStrap JavaScript -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- End Import -->
+</body>
+</html>
