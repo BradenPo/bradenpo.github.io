@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Import BootStrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- End Import -->
+	<link rel="stylesheet" type="text/css" href="resources/styling/stylesheet.css">
+	<!-- End Import -->
+	<title>New PTS Request | WFA Forms</title>
+</head>
+<body>
+
+	<center><img src="resources/img/logo.svg" width="500px"></center>
+	<div class="container">
+		<div class="jumbotron">
+  			<h1>Add New Patient Transfer Request</h1>
+  			<p>Enter the Patient's National Health Index (NHI) Number</p> 
+  				<div class="row">
+  					<div class="col-md-12">
+  						<div class="loginBox">
+  						<form action="https://forms.wfa.org.nz/PTS/PatientDetails.asp" method="post">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-plus-square"></i></span>
+									<input type="text" id="NHI" onkeyup="nhi_validate();" class="form-control" name="NHI" placeholder="NHI Number" required="required" autocomplete="off" maxlength="7">
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" onmousemove="nhi_validate();" class="btn btn-primary btn-block btn-lg" name="Action" id="Action" disabled><p>Next<p></button>
+							</div>
+						</form>
+					</div>
+					<div class="boxFooter">
+						<a href="javascript:history.back()">Go Back</a>
+					</div>
+					</div>
+				</div>
+		</div>
+		<br />
+  	</div>
+
+  	<div class="row">
+			<div class="col-md-12">
+		<div class="footer">
+			<p>Wellington Free Ambulance &copy; 2018 | <a href="http://wfa.org.nz">wfa.org.nz</a></p>
+		</div>
+	</div>
+	</div>
+
+	<!-- NHI JS -->
+	<script>
+
+function nhi_validate()
+	{
+	var nhi =document.getElementById("NHI").value 
+	if (nhi=='')
+		{
+		return
+		}
+	//test for 3 letters and 4 digits
+		var regnhi = /^([A-hj-np-xA-HJ-NP-X]){3}([0-9]){4}?$/;
+		if(regnhi.test(nhi) == false  )
+			{
+				Test1=false
+			}
+		else
+			{
+				Test1=true
+			}
+	//Test NHI Validation routine
+	
+	var index = document.getElementById('NHI');
+	var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+
+	var c1 = numerate(nhi.charAt(0))*7
+	var c2 = numerate(nhi.charAt(1))*6	
+	var c3 = numerate(nhi.charAt(2))*5
+	var c4 = nhi.charAt(3)*4
+	var c5 = nhi.charAt(4)*3	
+	var c6 = nhi.charAt(5)*2	
+	var c7 = nhi.charAt(6)*1	
+	var cTotal = c1+c2+c3+c4+c5+c6
+	
+	if ( cTotal % 11 == 0)
+		{
+		var Test2=false
+		}
+		else
+		{
+		var checkdigit = 11- cTotal % 11;
+		if(checkdigit == 10)
+			{
+			checkdigit = 0
+			}
+			
+		if(c7==checkdigit)
+			{
+			var Test2=true
+			}
+			else
+			{
+			var Test2=false
+			}
+		}
+	
+	
+	//Set Result	
+		if(Test1 == false || Test2==false)
+			{
+				index.style.backgroundColor = badColor;
+        		message.style.color = badColor;
+				document.getElementById("Action").disabled=true;
+			}
+		else
+			{
+				document.getElementById("Action").disabled = false;
+				index.style.backgroundColor = goodColor;
+        		message.style.color = goodColor;
+				document.getElementById("NHI").value =document.getElementById("NHI").value.toUpperCase(); 
+				//document.theForm.SubmitButton.disabled=false;
+				
+			}
+			
+	// Convert leter to digit 
+	function numerate (letter)
+		{	
+		var letter= letter.toUpperCase();
+		switch (letter)
+				{
+					case "A" :
+					var x='1'
+					break;
+					case "B":
+					var x='2'
+					break;
+					case "C":
+					var x='3'
+					break;
+					case "D":
+					var x='4'
+					break;
+					case "E":
+					var x='5'
+					break;
+					case "F":
+					var x='6'
+					break;
+					case "G":
+					var x='7'
+					break;
+					case "H":
+					var x='8'
+					// i IS INVALID
+					break;
+					case "J":
+					var x='9'
+					break;
+					case "K":
+					var x='10'
+					break;
+					case "L":
+					var x='11'
+					break;	
+					case "M":
+					var x='12'
+					break;
+					case "N":
+					var x='13'
+					break;
+					// O IS INVALID
+					case "P":
+					var x='14'
+					break;
+					case "Q":
+					var x='15'
+					break;
+					case "R":
+					var x='16'
+					break;
+					case "S":
+					var x='17'
+					break;
+					case "T":
+					var x='18'
+					break;
+					case "U":
+					var x='19'
+					break;
+					case "V":
+					var x='20'
+					break;
+					case "W":
+					var x='21'
+					break;
+					case "X":
+					var x='22'
+					break;
+					case "Y":
+					var x='23'
+					break;
+					case "Z":
+					var x='24'
+				}
+	return x;
+	}
+}	
+
+</script>
+
+		<!-- Import BootStrap JavaScript -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- End Import -->
+</body>
+</html>
