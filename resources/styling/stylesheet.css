@@ -68,7 +68,7 @@ img {
 
 .loginBox .btn p {
 	font-size: 25px;
-	letter-spacing: 0.5px;
+	letter-spacing: 0.75px;
 }
 
 .loginBox .btn:hover, .loginBox .btn:focus {
@@ -163,6 +163,7 @@ img {
 
 .footer p {
 	font-size: 12px;
+	color: #fff;
 	text-align: center;
 }
 
