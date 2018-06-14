@@ -1,0 +1,164 @@
+body {
+	background-color: #004677;
+	font-family: 'merriweather_sanslight', Arial, sans-serif;
+}
+
+@font-face {
+    font-family: 'lobster_handregular';
+    src: url('fonts/lobsterhand-webfont.woff2') format('woff2'),
+         url('fonts/lobsterhand-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'merriweather_sanslight';
+    src: url('fonts/merriweather/merriweathersans-light-webfont.woff2') format('woff2'),
+         url('fonts/merriweathermerriweathersans-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+	font-family: 'lobster_handregular';
+	color: #333;
+	padding-top: -100px;
+	text-align: center;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.header {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin: 0 auto;
+	max-width: 450px;
+}
+
+img {
+	max-width: 100%
+}
+
+.jumbotron {
+	background-color: #fefefe;
+}
+
+.jumbotron p {
+	font-size: 14px;
+	text-align: center;
+}
+
+.loginBox .btn {        
+    font-size: 16px;
+    font-weight: bold;
+	background: #00b185;
+    border-radius: 3px;
+	border: none;
+	min-width: 140px;
+    outline: none !important;
+}
+
+.loginBox .btn:hover, .loginBox .btn:focus {
+	background: #179b81;
+}
+
+.loginBox .hint-text {
+	text-align: center;
+	padding-top: 5px;
+	font-size: 13px;
+}
+
+.container .boxFooter {
+	color: #999;
+	border-color: #dee4e7;
+	border-top: 1px;
+	text-align: center;
+	margin: 0 -25px -25px;
+	font-size: 13px;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+.container .jumbotron {
+	color: #999;
+	border-radius: 7px;
+	margin-bottom: 15px;
+    background: #fff;
+	border: 1px solid #333;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+}
+
+.container .form-group {
+	margin-bottom: 20px;
+}
+
+..container label {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.container .form-control {
+	min-height: 38px;
+	padding-left: 5px;
+	box-shadow: none !important;
+	border-width: 0 0 1px 0;
+	border-radius: 0;
+}
+
+.container .form-control:focus {
+	border-color: #ccc;
+}
+
+.input-group-addon {
+		max-width: 42px;
+		text-align: center;
+		background: none;
+		border-width: 0 0 1px 0;
+		padding-left: 5px;
+		padding-right: 12px;
+		padding-top: 7.5px;
+		border-radius: 0;
+		font-size: 24px;
+	}
+
+.container a:hover {
+		text-decoration: none;
+	}
+	.container a {
+		color: #00b185;
+		text-decoration: none;
+	}	
+	.container a:hover {
+		text-decoration: underline;
+	}
+
+.footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+    background-color: #00b185;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+	font-size: 12px;
+	text-align: center;
+}
+
+.footer a {
+	color: #fff;
+}

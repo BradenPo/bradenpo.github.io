@@ -78,11 +78,11 @@ h1 {
 		border-color: #ccc;
 	}
 	.modal-login .input-group-addon {
-		max-width: 42px;
+		max-width: 100px;
 		text-align: center;
 		background: none;
 		border-width: 0 0 1px 0;
-		padding-left: 5px;
+		padding-left: 50px;
 		border-radius: 0;
 	}
     .modal-login .btn {        
@@ -160,4 +160,8 @@ h1 {
 
 .footer a {
 	color: #fff;
+}
+
+h1 a:hover {
+	text-decoration: none;
 }
